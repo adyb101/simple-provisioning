@@ -5,12 +5,12 @@
   connection: local
   gather_facts: false
   vars:
-    aws_region: ap-northeast-1
+    aws_region: ap-northeast-2
     vpc_name: simple-vpc
     vpc_cidr_block: 10.210.0.0/16
     subnet_cidr_block: 10.210.1.0/24
     instance_image: ami-06098fd00463352b6
-    ec2_key_name: devos-JMA
+    ec2_key_name: btc-edu-jma-key
     instance_type: t2.micro
   tasks:
   - name: Create VPC
@@ -28,7 +28,7 @@
       state: present
       region: "{{ aws_region }}"
       vpc_id: "{{ result_vpc.vpc.id }}"
-      cidr: "{{ vpc_cidr_block }}"
+      cidr: "{{ subnet_cidr_block }}"
       tags:
         Name: Webserver Subnet
     register: result_subnet
