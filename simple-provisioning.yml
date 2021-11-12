@@ -70,14 +70,12 @@
 
   - name: Create EC2
     ec2:
-      key_name: "{{ec2_key_name}}"
-      instance_type: "{{instance_type}}"
-      image: "{{instance_image}}"
-      region: "{{aws_region}}"
+      key_name: "{{  ec2_key_name  }}"
+      instance_type: "{{  instance_type  }}"
+      image: "{{  instance_image  }}"
+      region: "{{  aws_region  }}"
       wait: no
       group: allow tcp
-      instance_tags:
-        db: webserver
       count: 1
-      vpc_subnet_id: "{{result_subnet.subnet.id}}"
+      vpc_subnet_id: "{{  result_subnet.subnet.id  }}"
       assign_public_ip: yes
